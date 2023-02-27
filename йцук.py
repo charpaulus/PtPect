@@ -1,0 +1,1 @@
+print(functools.reduce(lambda x, y: x*y, map(lambda x: x ** 5, map(int, open('input.txt').readline().split()))))
