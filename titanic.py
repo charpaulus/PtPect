@@ -37,3 +37,4 @@ f = open('titanic-week1.txt', 'w')
 data_sex = data.loc[data.Sex == 'female']
 data_sex.loc[:, 'first_name'] = data_sex.apply(first_name, axis=1)
 print(data_sex.first_name.describe().top, file=f)
+print('Check with 2 file')
