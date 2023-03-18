@@ -1,2 +1,2 @@
-print('hello, this is conflict; lowercase') # lowercase
-print('just empty string, lowercase')
+print('hello, this is conflict')
+print('just empty string') # this right
