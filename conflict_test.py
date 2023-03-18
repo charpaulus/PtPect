@@ -1,2 +1,2 @@
-print('hello, this is conflict')
-print('just empty string')
+print('HELLO, this is conflict') # uppercase
+print('JUST empty string')
