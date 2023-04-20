@@ -1,14 +1,11 @@
-import zipfile
-import json
+import requests
 
-with zipfile.ZipFile('input.zip') as fzip:
-    c = 0
-    for el in fzip.infolist():
-        if el.external_attr == 32:
-            fl = el.filename.split('.')
-            if fl[len(fl) - 1] == 'json':
-                with fzip.open(el.filename) as fjs:
-                    data = json.load(fjs)
-                    if data['city'] == 'Москва':
-                        c += 1
-    print(c)
+geocoder_request = "https://geocode-maps.yandex.ru/1.x/?apikey=40d1649f-0493-4b70-98ba-98533de7710b&format=json&geocode=Севастополь"
+
+response = requests.get(geocoder_request)
+if response:
+    print(response.content)
+else:
+    print("Ошибка выполнения запроса:")
+    print(geocoder_request)
+    print("HTTP Статус:", response.status_code, '(', response.reason, ')')

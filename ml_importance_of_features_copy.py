@@ -21,8 +21,8 @@ def first_name(rws):
     return res
 
 
-data = pd.read_csv('titanic.csv', index_col='PassengerId')
-f = open('titanic-week1.txt', 'w')
+data = pd.read_csv('files/titanic.csv', index_col='PassengerId')
+f = open('files/titanic-week1.txt', 'w')
 data_sex = data.loc[data.Sex == 'female']
 data_sex.loc[:, 'first_name'] = data_sex.apply(first_name, axis=1)
 print(data_sex.first_name.describe().top, file=f)

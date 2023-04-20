@@ -8,7 +8,7 @@ def human_read_format(size):
         size = size / 1024
     return f'{round(size)}{pristavka[k]}'
 
-with zipfile.ZipFile('input.zip') as fzip:
+with zipfile.ZipFile('files/input.zip') as fzip:
     for el01 in fzip.infolist():
         way = el01.filename.rstrip('/').split('/')
         if el01.external_attr == 16:
