@@ -62,3 +62,11 @@ file_tree_02.close()
 tree.export_graphviz(clf, out_file="tree.dot")
 #render('dot', 'png', 'tree.dot')
 os.system('dot -Tpng tree.dot -o tree.png')
+
+i = 0
+for key in X:
+    result[key] = ips[i]
+    i += 1
+key_max_value_01 = max(result, key=result.get)
+del result[key_max_value_01]
+key_max_value_02 = max(result, key=result.get)

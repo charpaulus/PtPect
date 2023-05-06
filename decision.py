@@ -1,11 +1,7 @@
-import codecs
-import locale
-
 import pandas as pd
 from sklearn.tree import DecisionTreeClassifier
 
-
-data = pd.read_csv('titanic.csv', usecols=['Pclass', 'Age', 'Sex', 'Fare', 'Survived'])\
+data = pd.read_csv('files/titanic.csv', usecols=['Pclass', 'Age', 'Sex', 'Fare', 'Survived'])\
     .dropna().reset_index().replace('female', 0).replace('male', 1)
 X = data[['Pclass', 'Age', 'Sex', 'Fare']]
 Y = data[['Survived']]
@@ -20,7 +16,8 @@ for key in X:
 key_max_value_01 = max(result, key=result.get)
 del result[key_max_value_01]
 key_max_value_02 = max(result, key=result.get)
-with open('result.txt', 'w', encoding="ansi") as f:
-    f.write(key_max_value_02)
-    f.writelines(' ')
-    f.writelines(key_max_value_01)
+f = open('result.txt', 'w', encoding='ascii')
+f.write(key_max_value_01)
+f.writelines(',')
+f.writelines(key_max_value_02)
+f.close()
