@@ -1,16 +1,23 @@
-import codecs
-import locale
+import requests
 
-import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
+headers = {
+    'authority': 'www.kith.com',
+    'cache-control': 'max-age=0',
+    'upgrade-insecure-requests': '1',
+#    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.106 Safari/537.36',
+    'sec-fetch-dest': 'document',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'sec-fetch-site': 'same-origin',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-user': '?1',
+    'accept-language': 'en-US,en;q=0.9',
+}
 
+session = requests.session()
 
-with open("files/wine.data", "r") as file_01:
-    data = file_01.read()
+response = session.get("https://kith.com/collections/mens-footwear", headers=headers)
 
-winedata = pd.read_csv("files/wine.data")
-print(type(winedata))
-print(winedata)
-print('----------------')
-print(winedata[0:0])
-
+if response.status_code == 200:
+    print("Success")
+else:
+    print("Bad result")
